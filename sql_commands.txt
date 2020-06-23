@@ -1,0 +1,4 @@
+gcloud sql connect testdb --user=root --quiet (connect to db where testdb is name of db)
+use world (Use db where world is name of database to be used)
+show tables (shows tables in current db)
+source world.sql (open file where world.sql is file)
