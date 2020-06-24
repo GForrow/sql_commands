@@ -26,10 +26,28 @@ alter table person add constraint primary key (firstname, surname);
 
 alter table person drop primary key;
 
-select * from person; (selects all data from person data and displays in console)
-
 insert into person (column1, column2, ...) values (value1, value2, ...)
 
 delete from person where person_id=2; (Deletes record from person table where person_id=2)
 
 update person set age=28 where person_id=1; (updates person records where person_id=1)
+
+select * from person; (selects all data from person table and displays in console)
+
+select firstname, surname from person;
+
+select distinct firstname from person; (distinct selects unique values from person)
+
+select * from person where age > 18; (select all records from person where age > 18)
+
+select firstname as fname, surname, age from person; (gives fname alias to firstname in output)
+
+select * from person order by age; (order by age in asceding order by default, change to "by age desc" for descending order.)
+
+select * from person limit 5; (select all data but show only first 5 records)
+
+
+
+
+
+
