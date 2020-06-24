@@ -4,3 +4,24 @@ show tables; (shows tables in current db)
 source world.sql; (open file where world.sql is file)
 show databases; (shows available DBs)
 create database if not exists world; (create a db if doesn't already exist with name where world is name)
+
+
+----example create table ----
+create table my_table(
+firstname varchar(100) not null,
+surname varchar(100) not null,
+age int not null,
+unique(firstname),
+unique(surname)
+);
+------------------------------
+
+describe my_table; (shows schema of table my_table)
+
+drop table if exists my_table; (drops my_table from db)
+
+alter table my_table primary key;
+
+alter table person add constraint primary key (firstname, surname);
+
+alter table person drop primary key;
