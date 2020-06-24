@@ -25,3 +25,11 @@ alter table my_table primary key;
 alter table person add constraint primary key (firstname, surname);
 
 alter table person drop primary key;
+
+select * from person; (selects all data from person data and displays in console)
+
+insert into person (column1, column2, ...) values (value1, value2, ...)
+
+delete from person where person_id=2; (Deletes record from person table where person_id=2)
+
+update person set age=28 where person_id=1; (updates person records where person_id=1)
