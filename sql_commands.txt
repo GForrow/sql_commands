@@ -46,6 +46,22 @@ select * from person order by age; (order by age in asceding order by default, c
 
 select * from person limit 5; (select all data but show only first 5 records)
 
+select count(firstname) from person; (Counts all first names in table)
+
+select * from city;
+
+select sum(population) from city where district like "scotland"; (gets total of population column where district is like "scotland" in city table.)
+
+select min(population) from city; (selects minimum population from city table, works also with max or avg)
+
+select city, sum(population) as Population from city group by district;
+
+select order.orderID, customer.fname from orders join customer on orders.fk_customerID=customer.customerID;
+
+
+
+
+
 
 
 
