@@ -11,7 +11,7 @@ a.	select * from actor where last_name = "neeson";
 a.	select * from actor where (actor_id % 10) =0;
 
 5.	What is the description of the movie with ID of 100?
-a.	BROOKLYN DESERT | A Beautiful Drama of a Dentist And a Composer who must Battle a Sumo Wrestler in The First Manned Space Station
+a.	select description from film where film_id = 100;
 
 6.	Find every movie with a rating of “R”.
 a.	select * from film where rating = "R";
@@ -38,16 +38,27 @@ a.	select last_name from actor group by last_name having count(last_name)>1;
 a.	select fa.actor_id, count(fa.actor_id), a.first_name, a.last_name from film_actor fa join actor a on fa.actor_id=a.actor_id group by fa.actor_id order by count(fa.actor_id) desc limit 1;
 
 14.	Is ‘Academy Dinosaur’ available for rent from Store 1?
-a.	
+select f.title, s.store_id, i.film_id
+from film f join inventory i
+using(film_id) join store s
+using(store_id)
+where f.title = 'Academy Dinosaur' and s.store_id=1;
+
+select * from inventory
+where film_id=(select film_id from film where title='Academy Dinosaur') 
+and store_id=1;
 
 15.	When is ‘Academy Dinosaur’ due?
 a.	select release_year from film where title = "Academy Dinosaur";
+
+select return_date from rental
+where inventory_id=(select film_id from film where title="Academy Dinosaur");
 
 16.	What is that average running time of all the films in the database?
 a.	select avg(length) from film;
 
 17.	What is the average running time of films by category?
-a.	
+a.	select avg(length), category from film_list group by category;
 
 18.	How many movies have Robots in them?
 a.	select count(film_id) from film where description like "%Robot%";
@@ -59,14 +70,29 @@ a.	select * from film order by length desc limit 10 \G;
 a.	select count(release_year) from film where release_year = 2010;
 
 21.	Find the titles of all horror movies.
+select title from film_list where category="Horror";
+
 
 22.	Return the full name of the staff member – in a column named full_name – with the ID of 1.
 a.	select first_name, last_name from staff where staff_id =1;
+selectc concat(first_name,' ',last_name) as full_name from staff where staff_id=1;
 
 23.	Retrieve all movies that Fred Costner has appeared in.
 a.	select film_info from actor_info where last_name = "Costner";
 
 24.	Find out which location has the most copies of BUCKET BROTHERHOOD.
+select f.title, i.store_id 
+from film f 
+join inventory i 
+on f.film_id=i.film_id 
+limit 10;
+
+select inventory_id, film_id, store_id
+from inventory i
+join film_list fl on i.film_id=fl.fid
+where title="bucket brotherhood";
+
+
 
 25.	How many distinct countries are there?
 a.	select count(country) from country;
@@ -75,11 +101,36 @@ a.	select count(country) from country;
 a.	select name from language order by name asc;
 
 27.	Return the full names (first and last) of actors with “son” in their last name, ordered by their first name.
-a.	select first_name, last_name from actor where last_name like "%son%";
+a.	select first_name, last_name from actor where last_name like "%son%" order by first_name;
 
 28.	Create a list of categories and the number of films for each category.
-a.	select c.name, count(c.name) from category c join film_category fc on c.category_id=fc.category_id group by c.name;
+select c.name, count(c.name) 
+from category c join film_category fc
+on c.category_id=fc.category_id group by c.name;
 
 29.	Create a list of actors and the number of movies by each actor.
+select fa.actor_id, count(fa.actor_id), a.first_name, a.last_name 
+from film_actor fa 
+join actor a 
+on fa.actor_id=a.actor_id 
+group by fa.actor_id;
+
 
 30.	Which actor/actress has appeared in the most movies?
+select fa.actor_id, count(fa.actor_id), a.first_name, a.last_name 
+from film_actor fa 
+join actor a 
+on fa.actor_id=a.actor_id 
+group by fa.actor_id 
+order by count(fa.actor_id) desc 
+limit 1;
+
+
+
+select fa.actor_id, count(fa.actor_id), a.first_name, a.last_name 
+from film_actor fa 
+join actor a 
+on fa.actor_id=a.actor_id 
+group by fa.actor_id 
+order by count(fa.actor_id) desc 
+limit 1;
