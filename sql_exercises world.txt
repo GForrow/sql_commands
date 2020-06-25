@@ -8,13 +8,18 @@ select population, lifeexpectancy from country where name = "argentina";
 Select Name, lifeexpectancy from country where lifeexpectancy is not null order by lifeexpectancy desc limit 5;
 
 4.	Using JOIN … ON, what is the capital of Spain (ESP)?
-
-
-
-
-
+select co.name, ci.name 
+from country co 
+join city ci 
+on co.capital=ci.id 
+where co.name = "Spain";
 
 5.	Using JOIN … ON, list all the languages spoken in the 'Southeast Asia' region.
+select co.region, cl.language 
+from countrylanguage cl 
+join country co 
+on co.code=cl.countrycode 
+where region = "southeast asia";
 
 6.	Select 25 cities around the world that start with the letter 'F' in a single SQL query.
 select name from city where name like "F%" limit 25;
@@ -30,6 +35,7 @@ select count(distinct countrycode) as NumberOfCountries from city;
 
 10.	What are the top ten largest countries?
 select Name, SurfaceArea from country order by surfacearea desc limit 10;
+select Name, Population from country order by population desc limit 10;
 
 11.	List the top five largest cities in Japan.
 select * from city where CountryCode = "JPN" order by population desc limit 5;
@@ -38,6 +44,7 @@ select * from city where CountryCode = "JPN" order by population desc limit 5;
 select name, code from country where headofstate like "%Elisabeth%";
 
 13.	List the top ten countries which have the smallest population-to-area ratio.
+select Name, (population/surfacearea) as PopRatio from country order by PopRatio desc limit 10;
 
 14.	List every unique world language, according to the World database.
 select distinct language from countrylanguage;
@@ -49,6 +56,7 @@ select * from country order by gnp desc limit 10\G;
 select Name, surfacearea from country order by surfacearea desc limit 10;
 
 17.	List every country where over 50% of its population can speak French.
+Select countrycode, language, percentage from countrylanguage where (language = "french" and percentage > 50);
 
 18.	Which country has the worst life expectancy?
 select Name, Lifeexpectancy from country where lifeexpectancy is not null order by lifeexpectancy asc limit 1;
