@@ -5,7 +5,7 @@ select count(district) from city where countrycode = "USA";
 select population, lifeexpectancy from country where name = "argentina";
 
 3.	Using IS NOT NULL, ORDER BY, LIMIT, what country has the highest life expectancy?
-Select Name, lifeexpectancy from country where lifeexpectancy is not null order by lifeexpectancy desc limit 5;
+Select Name, lifeexpectancy from country where lifeexpectancy is not null order by lifeexpectancy desc limit 1;
 
 4.	Using JOIN … ON, what is the capital of Spain (ESP)?
 select co.name, ci.name 
@@ -44,7 +44,7 @@ select * from city where CountryCode = "JPN" order by population desc limit 5;
 select name, code from country where headofstate like "%Elisabeth%";
 
 13.	List the top ten countries which have the smallest population-to-area ratio.
-select Name, (population/surfacearea) as PopRatio from country order by PopRatio desc limit 10;
+select Name, (population/surfacearea) as PopRatio from country order by PopRatio limit 10;
 
 14.	List every unique world language, according to the World database.
 select distinct language from countrylanguage;
