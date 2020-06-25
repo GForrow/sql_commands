@@ -59,9 +59,26 @@ select city, sum(population) as Population from city group by district;
 select order.orderID, customer.fname from orders join customer on orders.fk_customerID=customer.customerID;
 
 
+show tables;
 
+select * from film_actor fa join actor a on fa.actor_id=a.actor_id limit 5;
 
+select * from category c join film_category fc on c.category_id=fc.categroy_is limit 5;
 
+##joining tables by common column
+select fa.actor_id, count(fa.actor_id), a.first_name, a.last_name 
+from film_actor fa 
+join actor a 
+on fa.actor_id=a.actor_id 
+group by fa.actor_id;
+
+select c.category_id, count(c.category_ID), fc.category_id,  
+from category c
+join film_category fc
+on c-category_id=fc.category_id 
+group by fa.actor_id;
+
+select fa.actor_id, count(fa.actor_id), a.first_name, a.last_name from film_actor fa join actor a on fa.actor_id=a.actor_id group by fa.actor_id order by count(fa.actor_id) desc limit 1;
 
 
 
