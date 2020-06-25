@@ -1,0 +1,12 @@
+man (manual command)
+sudo apt update (check for updates)
+
+sudo apt upgrade -y(apply upgrades with -y agree flag)
+
+touch (create a file that doesn't exist)
+
+echo (print the following into terminal)
+
+user=$() (set variable user to what is contained between() )
+
+echo $user (echo the user variable)
