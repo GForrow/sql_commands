@@ -27,9 +27,17 @@ htop (shows current processes in more details and adds colour. Can be used to ki
 
 kill -9 (pid) (kills process where pid is pid found in top)
 
-grep (used to search for given term eg cat test.txt | grep gary would search for gary in test.txt)
+grep (used to search for given term eg cat test.txt | grep gary would search for gary in test.txt, can also search the output of another command)
 
 wc test.txt (provides word count for text.txt)
+
+head test.txt (gives start of document)
+
+more test.txt (given ability to control scrolling through doc)
+
+tail test.txt (gives us end of document)
+
+
 
 
 
