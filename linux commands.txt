@@ -14,3 +14,29 @@ echo (print the following into terminal)
 user=$() (set variable user to what is contained between() )
 
 echo $user (echo the user variable)
+
+sudo su (operate as root super user)
+
+exit (can be used to exit from super user)
+
+ps (shows currently active processes)
+
+top (shows current processes in more details)
+
+htop (shows current processes in more details and adds colour. Can be used to kill hanging processes.)
+
+kill -9 (pid) (kills process where pid is pid found in top)
+
+grep (used to search for given term eg cat test.txt | grep gary would search for gary in test.txt)
+
+wc test.txt (provides word count for text.txt)
+
+
+
+
+
+
+
+
+
+
