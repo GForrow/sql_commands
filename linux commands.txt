@@ -1,4 +1,8 @@
-man (manual command)
+sudo apt update (checks for available updates)
+
+sudo apt upgrade -y (applies upgrades with -y on all prompts)
+
+man (manual command, eg man ls or man echo would give a manual for each command)
 sudo apt update (check for updates)
 
 sudo apt upgrade -y(apply upgrades with -y agree flag)
